@@ -27,10 +27,6 @@ return new class extends Migration
             // Photo (file path)
             $table->string('photo_profile')->nullable();
 
-            // Dates
-            $table->string('createdAt', 50);
-            $table->string('updatedAt', 50);
-
             // Temporary email change
             $table->string('temporary_email_status', 50)
                 ->comment('Requested, Verified, or Rejected');
@@ -39,6 +35,8 @@ return new class extends Migration
             // Indexes
             $table->unique('email');
             $table->unique('username');
+
+            $table->timestamps();
         });
     }
 
