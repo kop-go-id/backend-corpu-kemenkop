@@ -1,0 +1,30 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('subdistricts', function (Blueprint $table) {
+            $table->uuid('subdistrict_id')->primary();
+            $table->string('district_code');
+            $table->string('name', 50);
+            $table->string('code', 50)->unique();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('subdistricts');
+    }
+};
