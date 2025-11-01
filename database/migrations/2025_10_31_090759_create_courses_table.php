@@ -12,13 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('courses', function (Blueprint $table) {
-            $table->id('course_id');
-            $table->char('name', 50)->notNullable();
-            $table->unsignedBigInteger('course_category_id'); // ubah ke unsignedBigInteger
-            $table->longText('description')->notNullable();
-            $table->char('code_course', 50)->notNullable();
-            $table->string('thumbnail')->notNullable();
-            $table->char('level', 50)->notNullable();
+            $table->uuid('course_id')->primary();
+            $table->string('name', 50);
+            $table->uuid('course_category_id');
+            $table->foreign('course_category_id')->references('course_category_id')->on('course_categories')->onDelete('cascade');
+            $table->longText('description');
+            $table->string('code_course', 50);
+            $table->string('thumbnail');
+            $table->string('level', 50);
             $table->timestamps();
         });
     }

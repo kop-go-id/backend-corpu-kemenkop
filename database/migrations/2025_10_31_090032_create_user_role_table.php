@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id('user_role_id');
             $table->unsignedBigInteger('role_position_id');
             $table->unsignedBigInteger('institution_id');
-            $table->unsignedBigInteger('user_id');
+            $table->uuid('user_id');
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

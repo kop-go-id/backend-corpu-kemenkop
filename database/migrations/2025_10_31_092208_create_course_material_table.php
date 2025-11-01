@@ -12,10 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('course_materials', function (Blueprint $table) {
-            $table->id('course_material_id');
-            $table->char('title', 50)->notNullable();
-            $table->string('file')->notNullable();
-            $table->unsignedBigInteger('course_topic_id');
+            $table->uuid('course_material_id')->primary();
+            $table->string('title', 50);
+            $table->string('file');
+            $table->uuid('course_topic_id');
+            $table->foreign('course_topic_id')->references('course_topic_id')->on('course_topics')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('course_instructors', function (Blueprint $table) {
-            $table->uuid('course_instructor_id')->primary();
-            $table->string('photo_profile')->nullable();
+        Schema::create('course_enrollments', function (Blueprint $table) {
+            $table->id('course_enrollment_id');
             $table->uuid('user_id');
             $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
-            $table->longText('personal_description')->nullable();
+            $table->string('status'); // Requested, Approved, Pending, Rejected
             $table->uuid('course_id');
             $table->foreign('course_id')->references('course_id')->on('courses')->onDelete('cascade');
+            $table->string('source');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('course_instructors');
+        Schema::dropIfExists('course_enrollments');
     }
 };

@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('course_material_attachments', function (Blueprint $table) {
             $table->id('course_material_attachment_id');
-            $table->char('name', 50)->notNullable();
-            $table->string('file')->notNullable();
-            $table->unsignedBigInteger('course_material_id');
+            $table->string('name', 50);
+            $table->string('file');
+            $table->uuid('course_material_id');
+            $table->foreign('course_material_id')->references('course_material_id')->on('course_materials')->onDelete('cascade');
             $table->timestamps();
         });
     }

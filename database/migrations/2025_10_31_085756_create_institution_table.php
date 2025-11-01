@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::create('institutions', function (Blueprint $table) {
             $table->id('institution_id');
             $table->string('name', 50);
-            $table->unsignedBigInteger('province_id');
-            $table->unsignedBigInteger('district_id');
+            $table->uuid('province_id');
+            $table->foreign('province_id')->references('province_id')->on('provinces')->onDelete('cascade');
+            $table->longText('personal_description')->nullable();
+            $table->uuid('district_id');
+            $table->foreign('district_id')->references('district_id')->on('districts')->onDelete('cascade');
             $table->timestamps();
         });
     }

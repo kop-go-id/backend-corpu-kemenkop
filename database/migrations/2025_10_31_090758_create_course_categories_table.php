@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('course_categories', function (Blueprint $table) {
-            $table->id('course_category_id');
-            $table->char('name', 50)->notNullable();
+            $table->uuid('course_category_id')->primary();
+            $table->string('name', 50);
             $table->timestamps();
         });
     }
