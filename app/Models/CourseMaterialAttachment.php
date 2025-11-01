@@ -17,6 +17,16 @@ class CourseMaterialAttachment extends Model
         'updated_at',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model) {
+            if (empty($model->{$model->getKeyName()})) {
+                $model->{$model->getKeyName()} = (string) Str::uuid();
+            }
+        });
+    }
+
     public function material()
     {
         return $this->belongsTo(CourseMaterial::class, 'course_material_id', 'course_material_id');
