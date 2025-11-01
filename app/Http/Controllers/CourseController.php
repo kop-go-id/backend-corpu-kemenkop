@@ -41,6 +41,12 @@ class CourseController extends Controller
         return $this->success($course, 'Course detail');
     }
 
+    /**
+     * Show topics for a specific course
+     * @param string $courseId
+     * @return \Illuminate\Http\JsonResponse
+     */
+
     public function showTopics(string $courseId)
     {
         $topics = Course::findOrFail($courseId)->topics;
