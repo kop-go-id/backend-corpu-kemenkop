@@ -41,6 +41,12 @@ class CourseController extends Controller
         return $this->success($course, 'Course detail');
     }
 
+    public function showTopics(string $id)
+    {
+        $topics = Course::findOrFail($id)->topics;
+        return $this->success($topics, 'Course topics');
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
