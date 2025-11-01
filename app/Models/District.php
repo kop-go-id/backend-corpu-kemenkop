@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 
 class District extends Model
 {
+    use HasUuids;
     protected $primaryKey = 'district_id';
     protected $table = 'districts';
     protected $fillable = [

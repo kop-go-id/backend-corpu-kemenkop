@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 
 class Village extends Model
 {
+    use HasUuids;
+
     protected $primaryKey = 'village_id';
     protected $table = 'villages';
     protected $fillable = [
