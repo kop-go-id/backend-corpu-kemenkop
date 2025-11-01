@@ -35,15 +35,15 @@ class CourseController extends Controller
     /**
      * Show a course detail by id
      */
-    public function show(string $id)
+    public function show(string $courseId)
     {
-        $course = Course::findOrFail($id);
+        $course = Course::findOrFail($courseId);
         return $this->success($course, 'Course detail');
     }
 
-    public function showTopics(string $id)
+    public function showTopics(string $courseId)
     {
-        $topics = Course::findOrFail($id)->topics;
+        $topics = Course::findOrFail($courseId)->topics;
         return $this->success($topics, 'Course topics');
     }
 
